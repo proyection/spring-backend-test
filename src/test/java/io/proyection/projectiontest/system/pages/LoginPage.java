@@ -12,7 +12,7 @@ public class LoginPage {
     private By botonIniciarSesion = By.name("loginBtn");
     private By mensajeEmail = By.xpath("//*[@id=\"root\"]/div/div/div/div/div/form/div[1]/div");
     private By mensajePassword = By.xpath("//*[@id=\"root\"]/div/div/div/div/div/form/div[2]/div");
-    private final static int MAXIMO_TIEMPO  = 2000;
+    private final static int MAXIMO_TIEMPO  = 500;
 
 
     public LoginPage(String navegador) {

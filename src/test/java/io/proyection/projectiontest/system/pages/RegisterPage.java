@@ -8,7 +8,7 @@ import test.java.io.proyection.projectiontest.system.driver.ProjectionDriver;
 public class RegisterPage {
 
     private WebDriver webDriver = null;
-    private final static int MAXIMO_TIEMPO = 2000;
+    private final static int MAXIMO_TIEMPO = 500;
     private By link = By.xpath("//*[@id=\"mobile-nav\"]/ul/li[1]/a");
     private By cajaNombreUsuario = By.name("firstname");
     private By cajaApellidoUsuario = By.name("lastname");
