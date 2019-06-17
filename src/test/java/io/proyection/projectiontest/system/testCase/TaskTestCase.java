@@ -107,6 +107,7 @@ public class TaskTestCase {
         try {
             dashboardPage.ingresarPagina(url);
             dashboardPage.iniciarSesion(correo,password);
+            dashboardPage.registrarTarea("Tarea prueba","","IN PROGRESS", "", "");
             dashboardPage.tareaTerminada();
 
         } catch(AssertionError e) {
