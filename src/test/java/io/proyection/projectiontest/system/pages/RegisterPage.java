@@ -2,6 +2,7 @@ package test.java.io.proyection.projectiontest.system.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import test.java.io.proyection.projectiontest.system.driver.ProjectionDriver;
 
 public class RegisterPage {
 
@@ -19,7 +20,7 @@ public class RegisterPage {
 
 
     public RegisterPage(String navegador) {
-        this.webDriver = system.driver.ProjectionDriver.inicializarWebDriver(navegador);
+        this.webDriver = ProjectionDriver.inicializarWebDriver(navegador);
     }
 
     public void ingresarPagina(String urlInicial) throws Exception {
@@ -47,6 +48,6 @@ public class RegisterPage {
     }
 
     public void cerrarPagina() {
-        system.driver.ProjectionDriver.cerrarPagina(webDriver);
+        ProjectionDriver.cerrarPagina(webDriver);
     }
 }

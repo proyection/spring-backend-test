@@ -1,4 +1,4 @@
-package test.java.io.proyection.projectiontest.system.util;
+package io.proyection.projectiontest.system.util;
 
 import java.io.BufferedWriter;
 import java.io.File;

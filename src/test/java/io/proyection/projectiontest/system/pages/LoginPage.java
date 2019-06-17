@@ -1,8 +1,7 @@
 package test.java.io.proyection.projectiontest.system.pages;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import system.driver.ProjectionDriver;
+import test.java.io.proyection.projectiontest.system.driver.ProjectionDriver;
 
 public class LoginPage {
 

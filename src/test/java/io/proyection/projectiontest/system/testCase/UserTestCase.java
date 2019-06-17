@@ -3,10 +3,11 @@ package test.java.io.proyection.projectiontest.system.testCase;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
-import system.data.Excel;
-import system.pages.LoginPage;
-import system.util.Utilitario;
-import test.java.system.pages.RegisterPage;
+import test.java.io.proyection.projectiontest.system.data.Excel;
+import test.java.io.proyection.projectiontest.system.pages.LoginPage;
+import test.java.io.proyection.projectiontest.system.pages.RegisterPage;
+import io.proyection.projectiontest.system.util.Utilitario;
+
 
 public class UserTestCase {
 
