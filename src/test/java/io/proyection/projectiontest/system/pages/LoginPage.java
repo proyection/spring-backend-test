@@ -9,7 +9,7 @@ public class LoginPage {
     private By cajaUsuario = By.name("username");
     private By cajaClave = By.name("password");
     private By botonIniciarSesion = By.name("loginBtn");
-    private final static int MAXIMO_TIEMPO  = 6000;
+    private final static int MAXIMO_TIEMPO  = 2000;
 
 
     public LoginPage(String navegador) {
@@ -24,9 +24,12 @@ public class LoginPage {
     public void iniciarSesion(String usuario, String clave) throws Exception {
         webDriver.findElement(cajaUsuario).clear();
         webDriver.findElement(cajaUsuario).sendKeys(usuario);
+        Thread.sleep(MAXIMO_TIEMPO);
         webDriver.findElement(cajaClave).clear();
         webDriver.findElement(cajaClave).sendKeys(clave);
+        Thread.sleep(MAXIMO_TIEMPO);
         webDriver.findElement(botonIniciarSesion).click();
+        Thread.sleep(MAXIMO_TIEMPO);
     }
 
     public WebDriver obtenerPagina() {

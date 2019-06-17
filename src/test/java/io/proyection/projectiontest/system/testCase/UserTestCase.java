@@ -53,13 +53,13 @@ public class UserTestCase {
     }
 
     @Test(dataProvider = "datosRegistrar")
-    public void registrar_FlujoBasico(String nombreCasoPrueba, String url, String nombre, String apellido, String correo, String password, String confirmPassword, String valorEsperado) {
+    public void registrar_FlujoBasico(String nombreCasoPrueba, String url, String nombre, String apellido, String correo, String password,
+                                      String confirmPassword, String emailEsperado, String passwordEsperado, String confirmacionEsperado) {
         try {
             System.out.println(nombreCasoPrueba);
             registerPage.ingresarPagina(url);
-            registerPage.registrar(nombre, apellido, correo, password, confirmPassword);
-            // Esto es una validacion fake, valida que el mensaje sea igual al del excel
-            Assert.assertEquals("registrado", valorEsperado);
+            registerPage.registrar(nombre, apellido, correo, password, confirmPassword,emailEsperado,passwordEsperado, confirmacionEsperado);
+
         } catch(AssertionError e) {
             Utilitario.caputarPantallarError(rutaCapturaPantalla, e.getMessage(), registerPage.obtenerPagina());
             Assert.fail(e.getMessage());
