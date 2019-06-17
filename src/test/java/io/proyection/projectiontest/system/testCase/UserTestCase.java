@@ -23,19 +23,19 @@ public class UserTestCase {
         this.rutaCapturaPantalla = rutaCapturaPantalla;
     }
 
-    @DataProvider(name = "datosIniciarSesion") // permite pasar objetos
-    public static Object[][] datosIniciarSesion(ITestContext contexto) {
-        String ruta = contexto.getCurrentXmlTest().getParameter("rutaExcelLogin");
-        return Excel.leerExcel(ruta);
-    }
-
     @DataProvider(name = "datosRegistrar") // permite pasar objetos
     public static Object[][] datosRegistrar(ITestContext contexto) {
         String ruta = contexto.getCurrentXmlTest().getParameter("rutaExcelRegister");
         return Excel.leerExcel(ruta);
     }
 
-    @Test(dataProvider = "datosRegistrar")
+    @DataProvider(name = "datosIniciarSesion") // permite pasar objetos
+    public static Object[][] datosIniciarSesion(ITestContext contexto) {
+        String ruta = contexto.getCurrentXmlTest().getParameter("rutaExcelLogin");
+        return Excel.leerExcel(ruta);
+    }
+
+    @Test(dataProvider = "datosRegistrar", priority = 1)
     public void registrar_FlujoBasico(String nombreCasoPrueba, String url, String nombre, String apellido, String correo, String password,
                                       String confirmPassword, String emailEsperado, String passwordEsperado, String confirmacionEsperado) {
         try {
@@ -52,7 +52,7 @@ public class UserTestCase {
         }
     }
 
-    @Test(dataProvider = "datosIniciarSesion")
+    @Test(dataProvider = "datosIniciarSesion", priority = 2)
     public void iniciarSesion_FlujoBasico(String nombreCasoPrueba, String url, String usuario, String clave,
                                           String emailEsperado, String passwordEsperado) {
         try {
