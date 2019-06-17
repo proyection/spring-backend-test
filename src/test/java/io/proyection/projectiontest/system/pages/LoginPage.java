@@ -1,6 +1,7 @@
 package test.java.io.proyection.projectiontest.system.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import test.java.io.proyection.projectiontest.system.driver.ProjectionDriver;
 
 public class LoginPage {
@@ -9,6 +10,8 @@ public class LoginPage {
     private By cajaUsuario = By.name("username");
     private By cajaClave = By.name("password");
     private By botonIniciarSesion = By.name("loginBtn");
+    private By mensajeEmail = By.xpath("//*[@id=\"root\"]/div/div/div/div/div/form/div[1]/div");
+    private By mensajePassword = By.xpath("//*[@id=\"root\"]/div/div/div/div/div/form/div[2]/div");
     private final static int MAXIMO_TIEMPO  = 2000;
 
 
@@ -21,7 +24,7 @@ public class LoginPage {
         Thread.sleep(MAXIMO_TIEMPO);
     }
 
-    public void iniciarSesion(String usuario, String clave) throws Exception {
+    public void iniciarSesion(String usuario, String clave, String emailEsperado, String passwordEsperado) throws Exception {
         webDriver.findElement(cajaUsuario).clear();
         webDriver.findElement(cajaUsuario).sendKeys(usuario);
         Thread.sleep(MAXIMO_TIEMPO);
@@ -30,6 +33,15 @@ public class LoginPage {
         Thread.sleep(MAXIMO_TIEMPO);
         webDriver.findElement(botonIniciarSesion).click();
         Thread.sleep(MAXIMO_TIEMPO);
+
+        if(!emailEsperado.isEmpty()){
+            String text = webDriver.findElement(mensajeEmail).getText();
+            Assert.assertEquals(text,emailEsperado);
+        }
+        if(!passwordEsperado.isEmpty()){
+            String text = webDriver.findElement(mensajePassword).getText();
+            Assert.assertEquals(text,passwordEsperado);
+        }
     }
 
     public WebDriver obtenerPagina() {

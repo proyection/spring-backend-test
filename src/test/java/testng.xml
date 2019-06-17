@@ -3,8 +3,8 @@
 
     <test name="LoginTestChrome" enabled="true">
         <parameter name="navegador" value="chrome"/>
-        <parameter name="rutaExcelLogin" value="C:\development\data\loginData.xlsx"/>
         <parameter name="rutaExcelRegister" value="C:\development\data\registerData.xlsx" />
+        <parameter name="rutaExcelLogin" value="C:\development\data\loginData.xlsx"/>
         <parameter name="rutaCapturaPantalla" value="C:\development\rutaCapturaPantalla"/>
         <classes>
             <class name="test.java.io.proyection.projectiontest.system.testCase.UserTestCase"/>

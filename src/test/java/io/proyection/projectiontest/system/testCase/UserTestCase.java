@@ -18,8 +18,8 @@ public class UserTestCase {
     @BeforeTest
     @Parameters({"navegador", "rutaCapturaPantalla"})
     public void inicioTest(String navegador, String rutaCapturaPantalla)  {
-        loginPage = new LoginPage(navegador);
         registerPage = new RegisterPage(navegador);
+        loginPage = new LoginPage(navegador);
         this.rutaCapturaPantalla = rutaCapturaPantalla;
     }
 
@@ -35,23 +35,6 @@ public class UserTestCase {
         return Excel.leerExcel(ruta);
     }
 
-    @Test(dataProvider = "datosIniciarSesion")
-    public void iniciarSesion_FlujoBasico(String nombreCasoPrueba, String url, String usuario, String clave, String valorEsperado) {
-        try {
-            System.out.println(nombreCasoPrueba);
-            loginPage.ingresarPagina(url);
-            loginPage.iniciarSesion(usuario, clave);
-            // Esto es una validacion fake, valida que el mensaje sea igual al del excel
-            Assert.assertEquals("Se guardó de manera correcta la Categoría", valorEsperado);
-        } catch(AssertionError e) {
-            Utilitario.caputarPantallarError(rutaCapturaPantalla, e.getMessage(), loginPage.obtenerPagina());
-            Assert.fail(e.getMessage());
-        } catch(Exception e) {
-            Assert.fail("Error: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
     @Test(dataProvider = "datosRegistrar")
     public void registrar_FlujoBasico(String nombreCasoPrueba, String url, String nombre, String apellido, String correo, String password,
                                       String confirmPassword, String emailEsperado, String passwordEsperado, String confirmacionEsperado) {
@@ -62,6 +45,23 @@ public class UserTestCase {
 
         } catch(AssertionError e) {
             Utilitario.caputarPantallarError(rutaCapturaPantalla, e.getMessage(), registerPage.obtenerPagina());
+            Assert.fail(e.getMessage());
+        } catch(Exception e) {
+            Assert.fail("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @Test(dataProvider = "datosIniciarSesion")
+    public void iniciarSesion_FlujoBasico(String nombreCasoPrueba, String url, String usuario, String clave,
+                                          String emailEsperado, String passwordEsperado) {
+        try {
+            System.out.println(nombreCasoPrueba);
+            loginPage.ingresarPagina(url);
+            loginPage.iniciarSesion(usuario, clave, emailEsperado, passwordEsperado);
+
+        } catch(AssertionError e) {
+            Utilitario.caputarPantallarError(rutaCapturaPantalla, e.getMessage(), loginPage.obtenerPagina());
             Assert.fail(e.getMessage());
         } catch(Exception e) {
             Assert.fail("Error: " + e.getMessage());
