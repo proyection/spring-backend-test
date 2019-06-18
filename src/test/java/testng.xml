@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="VisorSystemSuite" parallel="tests">
+
+    <test name="LoginTestChrome" enabled="true">
+        <parameter name="navegador" value="chrome"/>
+        <parameter name="rutaExcelRegister" value="C:\development\data\registerData.xlsx" />
+        <parameter name="rutaExcelLogin" value="C:\development\data\loginData.xlsx"/>
+        <parameter name="rutaExcelRegistrarTask" value="C:\development\data\registrarTaskData.xlsx"/>
+        <parameter name="rutaExcelActualizarTask" value="C:\development\data\actualizarTaskData.xlsx"/>
+        <parameter name="rutaExcelExtraTask" value="C:\development\data\extraTaskData.xlsx"/>
+        <parameter name="rutaCapturaPantalla" value="C:\development\rutaCapturaPantalla"/>
+        <classes>
+            <class name="test.java.io.proyection.projectiontest.system.testCase.UserTestCase"/>
+            <class name="test.java.io.proyection.projectiontest.system.testCase.TaskTestCase"/>
+        </classes>
+    </test>
+
+</suite>
